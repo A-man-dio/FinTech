@@ -7,8 +7,27 @@ allSideMenu.forEach(item => {
 		allSideMenu.forEach(i => {
 			i.parentElement.classList.remove('active');
 		})
+
 		li.classList.add('active');
+
+		//
+		const mainItems = document.querySelectorAll("#content main");
+		// Adiciona o evento de clique em cada item
+		mainItems.forEach(item => {
+			item.classList.add("ocultar");
+		});
+		//
+
+		if (li.id == "dashboard-ref") {
+			document.getElementById("dashboard").classList.remove("ocultar");
+		} else if (li.id == "vendas-ref") {
+			document.getElementById("vendas").classList.remove("ocultar");
+		} else if (li.id == "graficos-analise-ref") {
+			document.getElementById("graficos-analise").classList.remove("ocultar");
+		}
+
 	})
+
 });
 
 
@@ -70,30 +89,6 @@ switchMode.addEventListener('change', function () {
 	}
 })
 
-//Navegar entre as páginas
-//-------------------------------------------------------------------
-
-paginaVendas = document.getElementById("vendas");
-paginaDashboard = document.getElementById("dashboard");
-paginaGraficosAnalise = document.getElementById("graficos-analise")
-
-function mudarPagina(pagina) {
-
-	if (pagina == "vendas") {
-		paginaDashboard.classList.add("ocultar");
-		paginaGraficosAnalise.classList.add("ocultar");
-		paginaVendas.classList.remove("ocultar");
-	} else if (pagina == "dashboard") {
-		paginaDashboard.classList.remove("ocultar");
-		paginaGraficosAnalise.classList.add("ocultar");
-		paginaVendas.classList.add("ocultar");
-	} else if (pagina == "graficos-analise") {
-		paginaDashboard.classList.add("ocultar");
-		paginaVendas.classList.add("ocultar");
-		paginaGraficosAnalise.classList.remove("ocultar");
-	}
-
-}
 
 //Efeito para a paginação
 //------------------------------------------------------------------
@@ -143,56 +138,41 @@ document.addEventListener("click", function (e) {
 });
 
 
-//Btn de Acções Vendas
-//_--------------------------------------------------------------
 
-// Event delegation para ações de editar / eliminar
-document.addEventListener('click', function (e) {
-	const btn = e.target.closest('.action-btn');
-	if (!btn) return;
+//Mudar entre submenus da página "Gráficos e Análise"
+//---------------------------------------------------------------------
 
-	const tr = btn.closest('tr');
-	if (!tr) return;
+const allSubMenus = document.querySelectorAll('.graficos-analise-submenu');
 
-	// EDITAR
-	if (btn.classList.contains('edit')) {
-		// Exemplo: editar quantidade
-		const qtdCell = tr.querySelector('.qtd');
-		const precoCell = tr.querySelector('.preco');
-		const totalCell = tr.querySelector('.total');
+allSubMenus.forEach(item => {
 
-		const currentQtd = qtdCell ? qtdCell.textContent.trim() : '';
-		const newQtd = prompt('Editar quantidade:', currentQtd);
+	item.addEventListener('click', function () {
 
-		if (newQtd === null) return; // cancelado
+		// Remove active de todos OS <a>
+		allSubMenus.forEach(i => {
+			i.classList.remove('active');
+		});
 
-		const parsedQ = parseInt(newQtd);
-		if (isNaN(parsedQ) || parsedQ < 0) {
-			alert('Quantidade inválida.');
-			return;
+		// Adiciona active no clicado
+		item.classList.add('active');
+
+		const graficosPrincipaisPaginas = document.querySelectorAll(".graficos-principais-pagina");
+
+		// Adiciona o evento de clique em cada item
+		graficosPrincipaisPaginas.forEach(item => {
+			item.classList.add("ocultar");
+		});
+
+		if (item.id == "resumo-rapido-ref") {
+			document.getElementById("resumo-rapido-submenu").classList.remove("ocultar");
+
+		} else if (item.id == "graficos-principais-ref") {
+			document.getElementById("graficos-principais-submenu").classList.remove("ocultar");
+		} else if (item.id == "comparacoes-ref") {
+			document.getElementById("comparacoes-submenu").classList.remove("ocultar");
 		}
 
-		// Atualiza quantidade
-		qtdCell.textContent = parsedQ;
 
-		// Recalcula total (assume formato "1234 Kz")
-		const precoText = precoCell.textContent.trim().replace(/\s*Kz$/i, '').replace(/\./g, '');
-		const precoNum = parseFloat(precoText.replace(/,/g, '.')) || 0;
-		const newTotal = precoNum * parsedQ;
-
-		// Formata de volta com Kz (sem milhares fancy para simplicidade)
-		totalCell.textContent = Math.round(newTotal) + ' Kz';
-	}
-
-	// ELIMINAR
-	if (btn.classList.contains('delete')) {
-		const prodNameEl = tr.querySelector('td p');
-		const prodName = prodNameEl ? prodNameEl.textContent.trim() : 'este item';
-		const ok = confirm(`Eliminar "${prodName}"? Esta ação não pode ser desfeita.`);
-		if (ok) {
-			tr.remove();
-		}
-	}
+	});
 });
-
 

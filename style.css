@@ -379,6 +379,7 @@ body {
 	overflow-y: auto;
 }
 
+
 #content main .head-title {
 	display: flex;
 	align-items: center;
@@ -406,12 +407,11 @@ body {
 
 #content main .head-title .left .breadcrumb li a {
 	color: var(--dark-grey);
-	pointer-events: none;
+	cursor: pointer;
 }
 
 #content main .head-title .left .breadcrumb li a.active {
 	color: var(--blue);
-	pointer-events: unset;
 }
 
 
@@ -692,6 +692,10 @@ body {
 
 /*Adicional Insights*/
 
+#graficos-analise .box-info {
+	margin-bottom: 20px;
+}
+
 .insights {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -927,7 +931,7 @@ body {
 }
 
 .ocultar {
-	display: none;
+	display: none !important;
 }
 
 /*----------------*/
@@ -1124,4 +1128,10 @@ body {
 table td.acoes {
 	white-space: nowrap;
 	width: 110px;
+}
+
+#graficos-principais-submenu,
+#comparacoes-submenu
+{
+	margin-bottom: 20px;
 }
