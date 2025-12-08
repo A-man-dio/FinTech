@@ -820,8 +820,20 @@ body {
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 	gap: 10px;
 	/* ↓ menor gap */
+
+	max-width: 500px;
 }
 
+/* DESCRIÇÃO DO CARD */
+.recommend-card p {
+
+	/* Evita que o texto estoure o card */
+	max-width: 230px;
+	/* ajusta conforme a largura do card */
+	word-wrap: break-word;
+	/* quebra palavras longas */
+	overflow-wrap: break-word;
+}
 
 /* LINHA VERTICAL (rec-line) */
 .rec-line {
@@ -1131,7 +1143,21 @@ table td.acoes {
 }
 
 #graficos-principais-submenu,
-#comparacoes-submenu
+#comparacoes-submenu,
+#predicoes-submenu
 {
 	margin-bottom: 20px;
+}
+
+#comparacoes-submenu .recommend-cards {
+	margin-top: 30px;
+}
+
+#predicoes-submenu .recommend-cards {
+	margin-top: 30px;
+}
+
+#produtos-3-mais-potencial{
+	margin-bottom: -70px;
+
 }

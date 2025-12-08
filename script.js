@@ -156,20 +156,32 @@ allSubMenus.forEach(item => {
 		// Adiciona active no clicado
 		item.classList.add('active');
 
+		//-----------------------------------------------------------
 		const graficosPrincipaisPaginas = document.querySelectorAll(".graficos-principais-pagina");
 
-		// Adiciona o evento de clique em cada item
 		graficosPrincipaisPaginas.forEach(item => {
 			item.classList.add("ocultar");
 		});
 
+		const btnGraficos = document.querySelectorAll(".btn-graficos");
+
+		btnGraficos.forEach(item => {
+			item.classList.add("ocultar");
+		});
+
+		//---------------------------------------------------------
+
 		if (item.id == "resumo-rapido-ref") {
 			document.getElementById("resumo-rapido-submenu").classList.remove("ocultar");
-
 		} else if (item.id == "graficos-principais-ref") {
 			document.getElementById("graficos-principais-submenu").classList.remove("ocultar");
+			document.getElementById("btn-grafico-personalizado").classList.remove("ocultar");
 		} else if (item.id == "comparacoes-ref") {
 			document.getElementById("comparacoes-submenu").classList.remove("ocultar");
+			document.getElementById("btn-grafico-comparativo").classList.remove("ocultar");
+		} else if (item.id == "predicoes-ref") {
+			document.getElementById("predicoes-submenu").classList.remove("ocultar");
+			document.getElementById("btn-grafico-preditivo").classList.remove("ocultar");
 		}
 
 
