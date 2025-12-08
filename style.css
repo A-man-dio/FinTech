@@ -476,17 +476,15 @@ body {
 }
 
 #content main .box-info li .text h3 {
-	font-size: 24px;
+	font-size: 18px;
 	font-weight: 600;
 	color: var(--dark);
 }
 
 #content main .box-info li .text p {
 	color: var(--dark);
+	font-size: 12px;
 }
-
-
-
 
 
 #content main .table-data {
@@ -770,9 +768,10 @@ body {
 
 .insights svg circle {
 	fill: none;
-	stroke: var(--clr-primary);
+	stroke: rgb(31, 191, 31);
 	transform: rotate(-72, 80, 80);
 	stroke-width: 5;
+	margin-left: 10px;
 }
 
 .insights .sales svg circle {
@@ -781,12 +780,15 @@ body {
 }
 
 .insights .expenses svg circle {
-	stroke-dashoffset: 0;
-	stroke-dasharray: 150;
+	stroke-dashoffset: 150;
+	stroke-dasharray: 135;
+	stroke: rgb(255, 0, 0);
 }
 
 .insights .income svg circle {
-	stroke: var(--clr-success);
+	stroke: rgb(31, 191, 31);
+	stroke-dashoffset: 10;
+	stroke-dasharray: 150;
 }
 
 .insights .progress .number {
@@ -978,6 +980,59 @@ body {
 	/* laranja escuro */
 }
 
+
+/*Estilo tipo de pagamento*/
+
+/* Badges de Tipo de Pagamento */
+.pagamento {
+	padding: 6px 14px;
+	border-radius: 20px;
+	font-size: 11px;
+	font-weight: 600;
+	display: inline-block;
+	color: #fff;
+	text-transform: capitalize;
+}
+
+/* CORES PARA CADA TIPO */
+.pagamento.tpa {
+	background: rgba(0, 102, 255, 0.85);
+	/* azul moderno */
+}
+
+.pagamento.dinheiro {
+	background: rgba(0, 172, 91, 0.85);
+	/* verde dinheiro */
+}
+
+.pagamento.transferencia {
+	background: rgba(255, 140, 0, 0.85);
+	/* laranja suave */
+}
+
+.pagamento.mobile {
+	background: rgba(138, 43, 226, 0.85);
+	/* roxo elegante */
+}
+
+/* Efeito hover (opcional) */
+.pagamento:hover {
+	filter: brightness(1.1);
+}
+
+.codigo-produto {
+	font-weight: 650;
+	font-size: 12px;
+	padding: 4px 10px;
+	background: #f0f0f0;
+	border-radius: 8px;
+	color: #333;
+	letter-spacing: 0.5px;
+	display: inline-block;
+}
+
+
+
 /* Pagination (compacta) */
 
 .centralizar {
@@ -1144,8 +1199,7 @@ table td.acoes {
 
 #graficos-principais-submenu,
 #comparacoes-submenu,
-#predicoes-submenu
-{
+#predicoes-submenu {
 	margin-bottom: 20px;
 }
 
@@ -1157,7 +1211,282 @@ table td.acoes {
 	margin-top: 30px;
 }
 
-#produtos-3-mais-potencial{
+#produtos-3-mais-potencial {
 	margin-bottom: -70px;
 
+}
+
+
+/* MAIN PERFIL DE NEGÓCIO */
+#perfil-negocio {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
+	max-height: calc(100vh - 56px);
+	overflow-y: auto;
+}
+
+#perfil-negocio .container-btns {
+	display: flex;
+	gap: 10px;
+}
+
+#perfil-negocio .btn-download {
+	height: 36px;
+	padding: 0 16px;
+	border-radius: 36px;
+	background: var(--blue);
+	color: var(--light);
+	display: flex;
+	align-items: center;
+	grid-gap: 10px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+/*------------------------------------------------
+*/
+
+
+/* Badge "Comerciante Verificado" dentro do info-card */
+.badge {
+	display: inline-block;
+	margin-top: 8px;
+	padding: 4px 10px;
+	/* menor padding para ficar mais compacto */
+	border-radius: 20px;
+	background: var(--blue);
+	color: var(--light);
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.badge-shadow {
+	display: inline-block;
+	margin-top: 8px;
+	padding: 4px 10px;
+	/* menor padding para ficar mais compacto */
+	border-radius: 20px;
+	background: var(--blue);
+	color: var(--light);
+	font-size: 12px;
+	font-weight: 600;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Info-card (Perfil) dentro de table-data */
+.table-data .info-card {
+	flex: 0 0 auto;
+	width: 320px;
+	/* um pouco mais largo */
+	background: linear-gradient(145deg, #ffffff, #f7f9fc);
+	border-radius: 20px;
+	padding: 24px;
+	text-align: center;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.table-data .info-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Logo */
+.table-data .info-card .logo-perfil {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-bottom: 16px;
+	border: 3px solid #4caf50;
+	transition: transform 0.3s;
+}
+
+.table-data .info-card .logo-perfil:hover {
+	transform: scale(1.1);
+}
+
+/* Nome da loja e categoria */
+.table-data .info-card h2 {
+	font-size: 20px;
+	font-weight: 700;
+	color: #222;
+	margin-bottom: 4px;
+}
+
+.table-data .info-card .categoria,
+.table-data .info-card p {
+	font-size: 14px;
+	color: #555;
+	margin: 2px 0;
+}
+
+/* Divider */
+.table-data .info-card .divider {
+	width: 60%;
+	height: 1px;
+	background: #e0e0e0;
+	margin: 12px auto;
+}
+
+/* Contato e localização */
+.table-data .info-card .contact-info {
+	text-align: left;
+	font-size: 13px;
+	color: #555;
+	margin: 8px 0;
+	line-height: 1.5;
+}
+
+.table-data .info-card .contact-info p {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	justify-content: flex-start;
+}
+
+.table-data .info-card .contact-info i {
+	color: #2196f3;
+	font-size: 16px;
+}
+
+
+/* Centralizar somente o parágrafo dos ícones */
+.table-data .info-card .contact-info p:last-child {
+	justify-content: center;
+	gap: 10px;
+	margin-top: 20px;
+	/* mais espaço entre os ícones */
+}
+
+/* Melhorar aparência dos ícones */
+.table-data .info-card .contact-info p:last-child i {
+	font-size: 20px;
+	color: #2196f3;
+	cursor: pointer;
+	transition: transform 0.2s ease, opacity 0.2s;
+}
+
+.table-data .info-card .contact-info p:last-child i:hover {
+	transform: scale(1.15);
+	opacity: 0.8;
+}
+
+/* Badge "Comerciante Verificado" */
+.table-data .info-card .badge.verified {
+	margin-top: 12px;
+	padding: 6px 14px;
+	font-size: 12px;
+	font-weight: 600;
+	border-radius: 50px;
+	background: #4caf50;
+	color: #fff;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Botão Editar perfil */
+.table-data .info-card .edit-btn {
+	margin-top: 12px;
+	padding: 6px 16px;
+	border-radius: 50px;
+	border: none;
+	background-color: #2196f3;
+	color: #fff;
+	cursor: pointer;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	transition: background-color 0.3s;
+}
+
+.table-data .info-card .edit-btn:hover {
+	background-color: #1976d2;
+}
+
+/* Status do comerciante */
+.table-data .info-card .status {
+	font-size: 12px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	color: #555;
+	margin-bottom: 8px;
+}
+
+.table-data .info-card .status i {
+	font-size: 10px;
+}
+
+.table-data .info-card .status.active i {
+	color: #4caf50;
+}
+
+.table-data .info-card .status.inactive i {
+	color: #f44336;
+}
+
+/*-------------------------------------------------------*/
+
+/* QR Code dentro de table-data */
+.table-data .qr-recommend {
+	flex: 0 0 auto;
+	/* não cresce */
+
+	/* largura justa */
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 16px;
+}
+
+/* QR Card */
+.table-data .qr-card {
+	flex: 0 0 auto;
+	width: 100%;
+	/* ocupa toda a largura do container interno */
+	border-radius: 20px;
+	padding: 16px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Imagem do QR */
+.table-data .qr-card img {
+	width: 250px;
+	height: 250px;
+	margin: 12px 0;
+	object-fit: contain;
+}
+
+/* Botões do QR */
+.table-data .qr-card .qr-btns {
+	display: flex;
+	gap: 8px;
+	justify-content: center;
+	margin-top: 8px;
+}
+
+.table-data .qr-card .qr-btns button {
+	padding: 6px 12px;
+	border-radius: 20px;
+	border: none;
+	background: var(--blue);
+	color: var(--light);
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.organizar{
+	display: flex;
+	justify-content: right;
+	font-size: 18px;
+	margin-top: 5px;
 }

@@ -24,6 +24,10 @@ allSideMenu.forEach(item => {
 			document.getElementById("vendas").classList.remove("ocultar");
 		} else if (li.id == "graficos-analise-ref") {
 			document.getElementById("graficos-analise").classList.remove("ocultar");
+		} else if (li.id == "produtos-ref") {
+			document.getElementById("produtos").classList.remove("ocultar");
+		} else if (li.id == "perfil-negocio-ref") {
+			document.getElementById("perfil-negocio").classList.remove("ocultar");
 		}
 
 	})

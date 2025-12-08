@@ -17,7 +17,6 @@
 
 <body>
 
-
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
@@ -31,6 +30,12 @@
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
+			<li id="produtos-ref">
+				<a href="#">
+					<i class='bx bxs-box'></i>
+					<span class="text">Produtos</span>
+				</a>
+			</li>
 			<li id="vendas-ref">
 				<a href="#">
 					<i class='bx bxs-shopping-bag-alt'></i>
@@ -40,19 +45,13 @@
 			<li id="graficos-analise-ref">
 				<a href="#">
 					<i class='bx bxs-doughnut-chart'></i>
-					<span class="text">Gráficos e Análise</span>
+					<span class="text">Gráficos e Análises</span>
 				</a>
 			</li>
-			<li>
+			<li id="perfil-negocio-ref">
 				<a href="#">
-					<i class='bx bxs-message-dots'></i>
-					<span class="text">Recomendações Inteligentes</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class='bx bxs-group'></i>
-					<span class="text">Team</span>
+					<i class='bx bxs-user-detail'></i>
+					<span class="text">Perfil de Negócio</span>
 				</a>
 			</li>
 		</ul>
@@ -114,10 +113,18 @@
 						</li>
 					</ul>
 				</div>
-				<a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download'></i>
-					<span class="text">Download PDF</span>
-				</a>
+
+				<div class="container-vendas-btns"><a href="#" class="btn-download">
+						<i class='bx bx-edit'></i>
+						<span class="text">Editar Dashboard</span>
+					</a>
+					<a href="#" class="btn-download">
+						<i class='bx bxs-cloud-download'></i>
+						<span class="text">Download PDF</span>
+					</a>
+				</div>
+
+
 			</div>
 
 			<div class="insights">
@@ -127,17 +134,17 @@
 					<span class="material-symbols-sharp">trending_up</span>
 					<div class="middle">
 						<div class="left">
-							<h3>Total Sales</h3>
-							<h1>$25,023</h1>
+							<h3>Vendas de Hoje</h3>
+							<h1>12 550 Kz</h1>
 						</div>
 						<div class="progress">
 							<svg>
-								<circle r="30" cy="40" cx="40"></circle>
+								<circle r="32" cy="38" cx="40"></circle>
 							</svg>
-							<div class="number">80%</div>
+							<div class="number">+80%</div>
 						</div>
 					</div>
-					<small>Last 24 Hours</small>
+					<small><i class='bx bxs-chevron-up'></i> Em relação à ontem</small>
 				</div>
 				<!-- end selling -->
 
@@ -146,17 +153,17 @@
 					<span class="material-symbols-sharp">local_mall</span>
 					<div class="middle">
 						<div class="left">
-							<h3>Expenses</h3>
-							<h1>$25,023</h1>
+							<h3>Lucro Semanal</h3>
+							<h1>50 000Kz</h1>
 						</div>
 						<div class="progress">
 							<svg>
-								<circle r="30" cy="40" cx="40"></circle>
+								<circle r="32" cy="38" cx="38"></circle>
 							</svg>
-							<div class="number">80%</div>
+							<div class="number">-10%</div>
 						</div>
 					</div>
-					<small>Last 24 Hours</small>
+					<small><i class='bx bxs-chevron-down'></i>Em relação à semana anterior</small>
 				</div>
 				<!-- end expenses -->
 
@@ -165,17 +172,17 @@
 					<span class="material-symbols-sharp">stacked_line_chart</span>
 					<div class="middle">
 						<div class="left">
-							<h3>Income</h3>
-							<h1>$25,023</h1>
+							<h3>Vendas do Mês</h3>
+							<h1>102 045Kz</h1>
 						</div>
 						<div class="progress">
 							<svg>
-								<circle r="30" cy="40" cx="40"></circle>
+								<circle r="32" cy="38" cx="40"></circle>
 							</svg>
-							<div class="number">80%</div>
+							<div class="number">+80%</div>
 						</div>
 					</div>
-					<small>Last 24 Hours</small>
+					<small><i class='bx bxs-chevron-down'></i> Em relação ao mês anterior</small>
 				</div>
 				<!-- end selling -->
 
@@ -259,7 +266,7 @@
 				<div class="todo">
 
 					<div class="head">
-						<h3>Todos</h3>
+						<h3>Notas</h3>
 						<i class='bx bx-plus'></i>
 						<i class='bx bx-filter'></i>
 					</div>
@@ -292,66 +299,270 @@
 
 				<div class="order">
 					<div class="head">
-						<h3>Recent Orders</h3>
+						<h3>Vendas Recentes</h3>
 						<i class='bx bx-search'></i>
-						<i class='bx bx-filter'></i>
+						<i class='bx bx-filter' id="filterBtn"></i>
+						<span id="aplicarFonte">filtro</span>
+
+						<!-- DROPDOWN DE FILTRO -->
+						<div class="filter-dropdown" id="filterDropdown">
+							<ul>
+								<li>Data</li>
+								<li>Produto</li>
+								<li>Intervalo</li>
+								<li>Quantidade</li>
+							</ul>
+						</div>
+
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
+								<th>Produto</th>
+								<th>Tipo de Pag</th>
+								<th>Qtd</th>
+								<th>Preço Unit</th>
+								<th>Total</th>
+								<th>Data/Hora</th>
+								<th>Categoria</th>
 							</tr>
 						</thead>
 						<tbody>
+
+
 							<tr>
 								<td>
 									<img src="img/people.png">
-									<p>John Doe</p>
+									<p>Fanta 1L</p>
 								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
+								<td>
+									<span class="pagamento tpa">TPA</span>
+								</td>
+								<td>3</td>
+								<td>800 Kz</td>
+								<td>2400 Kz</td>
+
+								<td>01-10-2023 14:32</td>
+								<td><span class="category bebidas">Bebidas</span></td>
 							</tr>
+
 							<tr>
 								<td>
 									<img src="img/people.png">
-									<p>John Doe</p>
+									<p>Arroz 5Kg</p>
 								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
+								<td>
+									<span class="pagamento dinheiro">Dinheiro</span>
+								</td>
+								<td>1</td>
+								<td>6500 Kz</td>
+								<td>6500 Kz</td>
+
+								<td>01-10-2023 10:15</td>
+								<td><span class="category alimentos">Alimentos</span></td>
 							</tr>
+
 							<tr>
 								<td>
 									<img src="img/people.png">
-									<p>John Doe</p>
+									<p>Sabonete Dove</p>
 								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
+								<td>
+									<span class="pagamento transferencia">Transferência</span>
+								</td>
+								<td>6</td>
+								<td>450 Kz</td>
+								<td>2700 Kz</td>
+
+								<td>30-09-2023 18:20</td>
+								<td><span class="category higiene">Higiene</span></td>
 							</tr>
+
 							<tr>
 								<td>
 									<img src="img/people.png">
-									<p>John Doe</p>
+									<p>Leite Nido</p>
 								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
 								<td>
-									<img src="img/people.png">
-									<p>John Doe</p>
+									<span class="pagamento mobile">Mobile Money</span>
 								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
+								<td>2</td>
+								<td>3200 Kz</td>
+								<td>6400 Kz</td>
+
+								<td>29-09-2023 09:00</td>
+								<td><span class="category lacteos">Lácteos</span></td>
 							</tr>
+
 						</tbody>
 					</table>
 				</div>
+
 			</div>
 
 		</main>
 		<!-- MAIN -->
+
+
+		<!-- MAIN PRODUTOS-->
+		<main id="produtos" class="ocultar">
+			<div class="head-title">
+				<div class="left">
+					<h1>Produtos</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Produtos</a>
+						</li>
+						<li><i class='bx bx-chevron-right'></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="container-vendas-btns">
+
+					<a href="#" class="btn-download">
+						<i class='bx bx-add-to-queue'></i>
+						<span class="text">Registar Produto</span>
+					</a>
+
+					<a href="#" class="btn-download">
+						<i class='bx bxs-cloud-download'></i>
+						<span class="text">Exportar Catálogo</span>
+					</a>
+
+				</div>
+
+			</div>
+
+
+			<div class="table-data">
+
+				<div class="order">
+					<div class="head">
+						<h3>Produtos</h3>
+						<i class='bx bx-search'></i>
+						<i class='bx bx-filter' id="filterBtn"></i>
+						<span id="aplicarFonte">filtro</span>
+
+						<!-- DROPDOWN DE FILTRO -->
+						<div class="filter-dropdown" id="filterDropdown">
+							<ul>
+								<li>Data</li>
+								<li>Produto</li>
+								<li>Intervalo</li>
+								<li>Quantidade</li>
+							</ul>
+						</div>
+
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Produto</th>
+								<th>Preço Unit</th>
+								<th>Código</th>
+								<th>Data/Hora</th>
+								<th>Categoria</th>
+								<th>Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+
+
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>Fanta 1L</p>
+								</td>
+								<td>800 Kz</td>
+								<td><span class="codigo-produto">7891000000123</span></td>
+								<td>01-10-2023 10:15</td>
+								<td><span class="category bebidas">Bebidas</span></td>
+								<td class="acoes">
+									<button class="action-btn edit" title="Editar"><i class="bx bx-edit"></i></button>
+									<button class="action-btn delete" title="Eliminar"><i
+											class="bx bx-trash"></i></button>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>Arroz 5Kg</p>
+								</td>
+								<td>6500 Kz</td>
+								<td><span class="codigo-produto">7891000000123</span></td>
+								<td>01-10-2023 10:15</td>
+								<td><span class="category alimentos">Alimentos</span></td>
+								<td class="acoes">
+									<button class="action-btn edit" title="Editar"><i class="bx bx-edit"></i></button>
+									<button class="action-btn delete" title="Eliminar"><i
+											class="bx bx-trash"></i></button>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>Sabonete Dove</p>
+								</td>
+								<td>450 Kz</td>
+								<td><span class="codigo-produto">7891000000123</span></td>
+								<td>30-09-2023 18:20</td>
+								<td><span class="category higiene">Higiene</span></td>
+								<td class="acoes">
+									<button class="action-btn edit" title="Editar"><i class="bx bx-edit"></i></button>
+									<button class="action-btn delete" title="Eliminar"><i
+											class="bx bx-trash"></i></button>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>Leite Nido</p>
+								</td>
+
+								<td>3200 Kz</td>
+								<td><span class="codigo-produto">7891000000123</span></td>
+								<td>29-09-2023 09:00</td>
+								<td><span class="category lacteos">Lácteos</span></td>
+								<td class="acoes">
+									<button class="action-btn edit" title="Editar"><i class="bx bx-edit"></i></button>
+									<button class="action-btn delete" title="Eliminar"><i
+											class="bx bx-trash"></i></button>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+			<div class="table-data centralizar">
+
+				<div class="pagination">
+					<button class="btn1"><img src="img/448-arrow.png" alt="prev">prev</button>
+					<ul>
+						<li class="link active" value="1" onclick="activeLink()">1</li>
+						<li class="link" value="2" onclick="activeLink()">2</li>
+						<li class="link" value="3" onclick="activeLink()">3</li>
+						<li class="link" value="4" onclick="activeLink()">4</li>
+						<li class="link" value="5" onclick="activeLink()">5</li>
+						<li class="link" value="6" onclick="activeLink()">6</li>
+					</ul>
+					<button class="btn2">next<img src="img/448-arrow.png" alt="next"></button>
+				</div>
+
+			</div>
+
+			</div>
+
+		</main>
+		<!-- MAIN PRODUTOS -->
 
 
 
@@ -412,6 +623,7 @@
 						<thead>
 							<tr>
 								<th>Produto</th>
+								<th>Tipo de Pag</th>
 								<th>Qtd</th>
 								<th>Preço Unit</th>
 								<th>Total</th>
@@ -428,9 +640,13 @@
 									<img src="img/people.png">
 									<p>Fanta 1L</p>
 								</td>
+								<td>
+									<span class="pagamento tpa">TPA</span>
+								</td>
 								<td>3</td>
 								<td>800 Kz</td>
 								<td>2400 Kz</td>
+
 								<td>01-10-2023 14:32</td>
 								<td><span class="category bebidas">Bebidas</span></td>
 								<td class="acoes">
@@ -445,9 +661,13 @@
 									<img src="img/people.png">
 									<p>Arroz 5Kg</p>
 								</td>
+								<td>
+									<span class="pagamento dinheiro">Dinheiro</span>
+								</td>
 								<td>1</td>
 								<td>6500 Kz</td>
 								<td>6500 Kz</td>
+
 								<td>01-10-2023 10:15</td>
 								<td><span class="category alimentos">Alimentos</span></td>
 								<td class="acoes">
@@ -462,9 +682,13 @@
 									<img src="img/people.png">
 									<p>Sabonete Dove</p>
 								</td>
+								<td>
+									<span class="pagamento transferencia">Transferência</span>
+								</td>
 								<td>6</td>
 								<td>450 Kz</td>
 								<td>2700 Kz</td>
+
 								<td>30-09-2023 18:20</td>
 								<td><span class="category higiene">Higiene</span></td>
 								<td class="acoes">
@@ -479,9 +703,13 @@
 									<img src="img/people.png">
 									<p>Leite Nido</p>
 								</td>
+								<td>
+									<span class="pagamento mobile">Mobile Money</span>
+								</td>
 								<td>2</td>
 								<td>3200 Kz</td>
 								<td>6400 Kz</td>
+
 								<td>29-09-2023 09:00</td>
 								<td><span class="category lacteos">Lácteos</span></td>
 								<td class="acoes">
@@ -527,10 +755,10 @@
 
 			<div class="head-title">
 				<div class="left">
-					<h1>Gráficos e Análise</h1>
+					<h1>Gráficos e Análises</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Gráficos e Análise</a>
+							<a href="#">Gráficos e Análises</a>
 						</li>
 						<li>
 							<i class='bx bx-chevron-right'></i>
@@ -588,17 +816,17 @@
 						<span class="material-symbols-sharp">trending_up</span>
 						<div class="middle">
 							<div class="left">
-								<h3>Total Sales</h3>
-								<h1>$25,023</h1>
+								<h3>Vendas de Hoje</h3>
+								<h1>12 550 Kz</h1>
 							</div>
 							<div class="progress">
 								<svg>
-									<circle r="30" cy="40" cx="40"></circle>
+									<circle r="32" cy="38" cx="40"></circle>
 								</svg>
-								<div class="number">80%</div>
+								<div class="number">+80%</div>
 							</div>
 						</div>
-						<small>Last 24 Hours</small>
+						<small><i class='bx bxs-chevron-up'></i> Em relação à ontem</small>
 					</div>
 					<!-- end selling -->
 
@@ -607,17 +835,17 @@
 						<span class="material-symbols-sharp">local_mall</span>
 						<div class="middle">
 							<div class="left">
-								<h3>Expenses</h3>
-								<h1>$25,023</h1>
+								<h3>Lucro Semanal</h3>
+								<h1>50 000Kz</h1>
 							</div>
 							<div class="progress">
 								<svg>
-									<circle r="30" cy="40" cx="40"></circle>
+									<circle r="32" cy="38" cx="38"></circle>
 								</svg>
-								<div class="number">80%</div>
+								<div class="number">-10%</div>
 							</div>
 						</div>
-						<small>Last 24 Hours</small>
+						<small><i class='bx bxs-chevron-down'></i>Em relação à semana anterior</small>
 					</div>
 					<!-- end expenses -->
 
@@ -626,19 +854,20 @@
 						<span class="material-symbols-sharp">stacked_line_chart</span>
 						<div class="middle">
 							<div class="left">
-								<h3>Income</h3>
-								<h1>$25,023</h1>
+								<h3>Vendas do Mês</h3>
+								<h1>102 045Kz</h1>
 							</div>
 							<div class="progress">
 								<svg>
-									<circle r="30" cy="40" cx="40"></circle>
+									<circle r="32" cy="38" cx="40"></circle>
 								</svg>
-								<div class="number">80%</div>
+								<div class="number">+80%</div>
 							</div>
 						</div>
-						<small>Last 24 Hours</small>
+						<small><i class='bx bxs-chevron-down'></i> Em relação ao mês anterior</small>
 					</div>
 					<!-- end selling -->
+
 				</div>
 				<!-- end insights -->
 
@@ -646,22 +875,22 @@
 					<li>
 						<i class='bx bxs-calendar-check'></i>
 						<span class="text">
-							<h3>1020</h3>
-							<p>New Order</p>
-						</span>
-					</li>
-					<li>
-						<i class='bx bxs-group'></i>
-						<span class="text">
-							<h3>2834</h3>
-							<p>Visitors</p>
+							<h3>Segunda-Feira</h3>
+							<p>Dia mais lucrativo da semana</p>
 						</span>
 					</li>
 					<li>
 						<i class='bx bxs-dollar-circle'></i>
 						<span class="text">
-							<h3>$2543</h3>
-							<p>Total Sales</p>
+							<h3>Arroz 1Kg</h3>
+							<p>Produto mais vendido</p>
+						</span>
+					</li>
+					<li>
+						<i class='bx bxs-dollar-circle'></i>
+						<span class="text">
+							<h3>Fanta 1L</h3>
+							<p>Produto mais lucrativo</p>
 						</span>
 					</li>
 				</ul>
@@ -672,22 +901,27 @@
 			<div id="graficos-principais-submenu" class="table-data graficos-principais-pagina ocultar">
 
 				<div class="chart">
+
 					<h2>Vendas no período estipulado</h2>
+					<i class='bx bx-edit organizar'></i>
 					<canvas id="vendas-periodo-estipulado"></canvas>
 				</div>
 
 				<div class="chart">
 					<h2>Top 5 Produtos mais Lucrativos</h2>
+					<i class='bx bx-edit organizar'></i>
 					<canvas id="5-produtos-mais-lucrativos"></canvas>
 				</div>
 
 				<div class="chart">
 					<h2>Top 5 Produtos mais vendidos</h2>
+					<i class='bx bx-edit organizar'></i>
 					<canvas id="5-produtos-mais-vendidos"></canvas>
 				</div>
 
 				<div class="chart">
 					<h2>Top 5 Categorias mais lucrativas</h2>
+					<i class='bx bx-edit organizar'></i>
 					<canvas id="5-categorias-mais-lucrativas"></canvas>
 				</div>
 
@@ -700,6 +934,7 @@
 
 				<div class="chart">
 					<h2>Semana Actual x Semana Passada</h2>
+					<i class='bx bx-edit organizar'></i>
 					<canvas id="comparacao-semanas"></canvas>
 
 					<div class="recommend-cards">
@@ -722,6 +957,7 @@
 
 				<div class="chart">
 					<h2>Mês Actual x Mês Passado</h2>
+					<i class='bx bx-edit organizar'></i>
 					<canvas id="comparacao-meses"></canvas>
 
 					<div class="recommend-cards">
@@ -744,6 +980,7 @@
 
 				<div class="chart">
 					<h2>Crescimento por categoria - Mês Actual x Mês Passado</h2>
+					<i class='bx bx-edit organizar'></i>
 					<canvas id="crescimento-categoria-comparacao-meses"></canvas>
 
 					<div class="recommend-cards">
@@ -897,7 +1134,7 @@
 				<div class="todo">
 
 					<div class="head">
-						<h3>Todos</h3>
+						<h3>Notas</h3>
 						<i class='bx bx-plus'></i>
 						<i class='bx bx-filter'></i>
 					</div>
@@ -1029,6 +1266,7 @@
 						<thead>
 							<tr>
 								<th>Produto</th>
+								<th>Tipo de Pag</th>
 								<th>Qtd</th>
 								<th>Preço Unit</th>
 								<th>Total</th>
@@ -1044,9 +1282,13 @@
 									<img src="img/people.png">
 									<p>Fanta 1L</p>
 								</td>
+								<td>
+									<span class="pagamento tpa">TPA</span>
+								</td>
 								<td>3</td>
 								<td>800 Kz</td>
 								<td>2400 Kz</td>
+
 								<td>01-10-2023 14:32</td>
 								<td><span class="category bebidas">Bebidas</span></td>
 							</tr>
@@ -1056,9 +1298,13 @@
 									<img src="img/people.png">
 									<p>Arroz 5Kg</p>
 								</td>
+								<td>
+									<span class="pagamento dinheiro">Dinheiro</span>
+								</td>
 								<td>1</td>
 								<td>6500 Kz</td>
 								<td>6500 Kz</td>
+
 								<td>01-10-2023 10:15</td>
 								<td><span class="category alimentos">Alimentos</span></td>
 							</tr>
@@ -1068,9 +1314,13 @@
 									<img src="img/people.png">
 									<p>Sabonete Dove</p>
 								</td>
+								<td>
+									<span class="pagamento transferencia">Transferência</span>
+								</td>
 								<td>6</td>
 								<td>450 Kz</td>
 								<td>2700 Kz</td>
+
 								<td>30-09-2023 18:20</td>
 								<td><span class="category higiene">Higiene</span></td>
 							</tr>
@@ -1080,9 +1330,13 @@
 									<img src="img/people.png">
 									<p>Leite Nido</p>
 								</td>
+								<td>
+									<span class="pagamento mobile">Mobile Money</span>
+								</td>
 								<td>2</td>
 								<td>3200 Kz</td>
 								<td>6400 Kz</td>
+
 								<td>29-09-2023 09:00</td>
 								<td><span class="category lacteos">Lácteos</span></td>
 							</tr>
@@ -1117,9 +1371,351 @@
 		<!-- MAIN GRÁFICOS E ANÁLISES -->
 
 
+		<!-- MAIN PERFIL DE NEGÓCIO -->
+		<main id="perfil-negocio" class="ocultar">
+
+			<!-- Cabeçalho -->
+			<div class="head-title">
+				<div class="left">
+					<h1>Perfil de Negócio</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right'></i></li>
+						<li>
+							<a class="active" href="#">Perfil de Negócio</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="container-btns">
+					<a href="#" class="btn-download">
+						<i class='bx bx-edit'></i>
+						<span class="text">Editar Visão do Perfil</span>
+					</a>
+					<a href="#" class="btn-download">
+						<i class='bx bxs-cloud-download'></i>
+						<span class="text">Exportar PDF</span>
+					</a>
+				</div>
+
+			</div>
+
+
+			<div class="table-data">
+
+				<!--Card Info-->
+				<div class="info-card">
+					<img src="img/logo_loja_png.png" alt="Logo da Loja" class="logo-perfil">
+
+					<!-- Status -->
+					<span class="status active"><i class='bx bxs-circle'></i> Ativo</span>
+
+					<h2>Nome da Loja</h2>
+					<p class="categoria">Categoria: Bebidas</p>
+					<p> <span class="codigo-produto">ID: 00123</span></p>
+					<p>Data de Registro: 01-01-2023</p>
+
+					<div class="divider"></div>
+
+					<!-- Contato e localização -->
+					<div class="contact-info">
+						<p><i class='bx bxs-phone'></i> +244 912 345 678</p>
+						<p><i class='bx bxs-envelope'></i> lojadobairro@gmail.com</p>
+						<p><i class='bx bxs-map'></i> Rua do Comércio, Luanda</p>
+						<p>
+							<i class='bx bxl-facebook-square'></i>
+							<i class='bx bxl-instagram'></i>
+							<i class='bx bxl-whatsapp'></i>
+						</p>
+					</div>
+
+					<span class="badge verified">Comerciante Verificado</span>
+
+					<!-- Botão Editar Perfil -->
+					<span class="badge-shadow"><i class='bx bxs-edit'></i>
+						Editar Perfil</span>
+				</div>
+
+				<!--QR Code-->
+				<div class="qr-recommend">
+					<div class="qr-card">
+						<h3>QR Code do Perfil</h3>
+						<img src="img/QR_Code.png" alt="QR Code Perfil">
+						<div class="qr-btns">
+							<span class="badge verified"><i class='bx bxs-copy'></i>
+								Copiar link</span>
+							<span class="badge verified"><i class='bx bxs-download'></i>
+								Baixar QR code</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="recommend-cards">
+					<h2>Recomendações Inteligentes</h2>
+
+					<!-- CARD 1 - Reposição de estoque -->
+					<div class="recommend-card stock">
+						<div class="rec-line"></div>
+						<div class="date-box">
+							<span class="day">Mon</span>
+							<span class="number">18</span>
+						</div>
+
+						<div class="info">
+							<h3>Reposição de estoque 🛒</h3>
+							<p class="desc">As vendas de Fanta 1L aumentaram 25% — reponha estoque.</p>
+						</div>
+					</div>
+
+					<!-- CARD 2 - Tendências de vendas -->
+					<div class="recommend-card trending">
+						<div class="rec-line"></div>
+						<div class="date-box">
+							<span class="day">Tue</span>
+							<span class="number">19</span>
+						</div>
+
+						<div class="info">
+							<h3>Aumento de vendas 📈</h3>
+							<p class="desc">Sexta-feira tem 40% mais vendas — considere promoções.</p>
+						</div>
+					</div>
+
+					<!-- CARD 3 - Clima -->
+					<div class="recommend-card weather">
+						<div class="rec-line"></div>
+						<div class="date-box">
+							<span class="day">Wed</span>
+							<span class="number">20</span>
+						</div>
+
+						<div class="info">
+							<h3>Clima favorável 🌦️</h3>
+							<p class="desc">Vai fazer calor — bebidas geladas tendem a vender mais.</p>
+						</div>
+					</div>
+
+					<!-- CARD 4 - Preço / Margem -->
+					<div class="recommend-card pricing">
+						<div class="rec-line"></div>
+						<div class="date-box">
+							<span class="day">Thu</span>
+							<span class="number">21</span>
+						</div>
+
+						<div class="info">
+							<h3>Ajuste de preços 🏷️</h3>
+							<p class="desc">Margem de lucro do arroz caiu — ajuste o preço.</p>
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+
+			<!-- Bloco Desempenho do Negócio -->
+			<div class="insights">
+
+				<!-- start selling -->
+				<div class="sales">
+					<span class="material-symbols-sharp">trending_up</span>
+					<div class="middle">
+						<div class="left">
+							<h3>Vendas de Hoje</h3>
+							<h1>12 550 Kz</h1>
+						</div>
+						<div class="progress">
+							<svg>
+								<circle r="32" cy="38" cx="40"></circle>
+							</svg>
+							<div class="number">+80%</div>
+						</div>
+					</div>
+					<small><i class='bx bxs-chevron-up'></i> Em relação à ontem</small>
+				</div>
+				<!-- end selling -->
+
+				<!-- start expenses -->
+				<div class="expenses">
+					<span class="material-symbols-sharp">local_mall</span>
+					<div class="middle">
+						<div class="left">
+							<h3>Lucro Semanal</h3>
+							<h1>50 000Kz</h1>
+						</div>
+						<div class="progress">
+							<svg>
+								<circle r="32" cy="38" cx="38"></circle>
+							</svg>
+							<div class="number">-10%</div>
+						</div>
+					</div>
+					<small><i class='bx bxs-chevron-down'></i>Em relação à semana anterior</small>
+				</div>
+				<!-- end expenses -->
+
+				<!-- start expenses -->
+				<div class="income">
+					<span class="material-symbols-sharp">stacked_line_chart</span>
+					<div class="middle">
+						<div class="left">
+							<h3>Vendas do Mês</h3>
+							<h1>102 045Kz</h1>
+						</div>
+						<div class="progress">
+							<svg>
+								<circle r="32" cy="38" cx="40"></circle>
+							</svg>
+							<div class="number">+80%</div>
+						</div>
+					</div>
+					<small><i class='bx bxs-chevron-down'></i> Em relação ao mês anterior</small>
+				</div>
+				<!-- end selling -->
+
+			</div>
+			<!-- end insights -->
+
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-calendar-check'></i>
+					<span class="text">
+						<h3>Segunda-Feira</h3>
+						<p>Dia mais lucrativo da semana</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle'></i>
+					<span class="text">
+						<h3>Arroz 1Kg</h3>
+						<p>Produto mais vendido</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle'></i>
+					<span class="text">
+						<h3>Fanta 1L</h3>
+						<p>Produto mais lucrativo</p>
+					</span>
+				</li>
+			</ul>
+
+			<!-- Histórico Resumido -->
+			<div class="table-data">
+
+				<div class="order">
+					<div class="head">
+						<h3>Melhores vendas da semana</h3>
+						<i class='bx bx-search'></i>
+						<i class='bx bx-filter' id="filterBtn2"></i>
+						<span id="aplicarFonte">filtro</span>
+
+						<!-- DROPDOWN DE FILTRO -->
+						<div class="filter-dropdown" id="filterDropdown2">
+							<ul>
+								<li>Data</li>
+								<li>Produto</li>
+								<li>Intervalo</li>
+								<li>Quantidade</li>
+							</ul>
+						</div>
+
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Produto</th>
+								<th>Tipo de Pag</th>
+								<th>Qtd</th>
+								<th>Preço Unit</th>
+								<th>Total</th>
+								<th>Data/Hora</th>
+								<th>Categoria</th>
+							</tr>
+						</thead>
+						<tbody>
+
+
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>Fanta 1L</p>
+								</td>
+								<td>
+									<span class="pagamento tpa">TPA</span>
+								</td>
+								<td>3</td>
+								<td>800 Kz</td>
+								<td>2400 Kz</td>
+
+								<td>01-10-2023 14:32</td>
+								<td><span class="category bebidas">Bebidas</span></td>
+							</tr>
+
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>Arroz 5Kg</p>
+								</td>
+								<td>
+									<span class="pagamento dinheiro">Dinheiro</span>
+								</td>
+								<td>1</td>
+								<td>6500 Kz</td>
+								<td>6500 Kz</td>
+
+								<td>01-10-2023 10:15</td>
+								<td><span class="category alimentos">Alimentos</span></td>
+							</tr>
+
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>Sabonete Dove</p>
+								</td>
+								<td>
+									<span class="pagamento transferencia">Transferência</span>
+								</td>
+								<td>6</td>
+								<td>450 Kz</td>
+								<td>2700 Kz</td>
+
+								<td>30-09-2023 18:20</td>
+								<td><span class="category higiene">Higiene</span></td>
+							</tr>
+
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>Leite Nido</p>
+								</td>
+								<td>
+									<span class="pagamento mobile">Mobile Money</span>
+								</td>
+								<td>2</td>
+								<td>3200 Kz</td>
+								<td>6400 Kz</td>
+
+								<td>29-09-2023 09:00</td>
+								<td><span class="category lacteos">Lácteos</span></td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</main>
+		<!-- MAIN PERFIL DE NEGÓCIO -->
+
 	</section>
 	<!-- CONTENT -->
-
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="script.js"></script>
