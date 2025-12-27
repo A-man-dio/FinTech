@@ -13,7 +13,8 @@ const ctx11 = document.getElementById('produtos-3-mais-potencial');
 
 
 
-new Chart(ctx, {
+if(ctx){
+    new Chart(ctx, {
     type: 'doughnut',
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'White'],
@@ -41,9 +42,10 @@ new Chart(ctx, {
         responsive: true
     }
 });
+}
 
-
-new Chart(ctx1, {
+if (ctx1){
+    new Chart(ctx1, {
     type: 'line',
     data: {
         labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
@@ -69,9 +71,11 @@ new Chart(ctx1, {
         responsive: true
     }
 });
+}
 
 
-new Chart(ctx2, {
+if (ctx2){
+    new Chart(ctx2, {
     type: 'line',
     data: {
         labels: ['21/02', '22/02', '23/02', '24/02', '25/02', '26/02', '27/02'],
@@ -97,8 +101,10 @@ new Chart(ctx2, {
         responsive: true
     }
 });
+}
 
-new Chart(ctx3, {
+if (ctx3){
+    new Chart(ctx3, {
     type: 'doughnut',
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'White'],
@@ -126,9 +132,11 @@ new Chart(ctx3, {
         responsive: true
     }
 });
+}
 
 
-new Chart(ctx4, {
+if (ctx4){
+    new Chart(ctx4, {
     type: 'bar',
     data: {
         labels: ['Red', 'Blue', 'Yellow', 'Green', 'White'],
@@ -158,8 +166,10 @@ new Chart(ctx4, {
     }
 });
 
+}
 
-new Chart(ctx5, {
+if (ctx5){
+    new Chart(ctx5, {
     type: 'polarArea',
     data: {
         labels: ['Bebidas', 'Comidas', 'Electrónicos', 'Lazer', 'Bebê'],
@@ -187,9 +197,11 @@ new Chart(ctx5, {
         responsive: true
     }
 });
+}
 
 
-new Chart(ctx6, {
+if (ctx6){
+    new Chart(ctx6, {
     type: 'line',
     data: {
         labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
@@ -234,6 +246,7 @@ new Chart(ctx6, {
         responsive: true
     }
 });
+}
 
 
 //_________________________________________________________________________
@@ -268,7 +281,8 @@ const mediasAtual = mediaSemanal(mesAtual);    // [media semana 1, 2, 3, 4, 5]
 const mediasPassado = mediaSemanal(mesPassado);
 
 
-new Chart(ctx7, {
+if (ctx7){
+    new Chart(ctx7, {
     type: 'bar',
     data: {
         labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4', 'Sem 5'],
@@ -317,6 +331,7 @@ new Chart(ctx7, {
         responsive: true
     }
 });
+}
 
 
 //_____________________________________________________________________________
@@ -340,7 +355,8 @@ const cores = crescimento.map(valor =>
 );
 
 
-new Chart(ctx8, {
+if (ctx8){
+    new Chart(ctx8, {
     type: 'bar',
     data: {
         labels: categorias,
@@ -374,6 +390,7 @@ new Chart(ctx8, {
         }
     }
 });
+}
 
 
 //______________________________________________________________________________
@@ -389,7 +406,8 @@ const vendasPrevistas = [120000, 135000, 128000, 140000, 150000, 145000, 155000]
 const margemSuperior = vendasPrevistas.map(v => v * 1.1); // +10%
 const margemInferior = vendasPrevistas.map(v => v * 0.9); // -10%
 
-new Chart(ctx9, {
+if (ctx9){
+    new Chart(ctx9, {
     type: 'line',
     data: {
         labels: labels,
@@ -445,6 +463,7 @@ new Chart(ctx9, {
         }
     }
 });
+}
 
 
 //______________________________________________________________________________
@@ -467,7 +486,8 @@ const variacaoPercentual = previsao.map((v, i) => {
     return ((diff / historico[i]) * 100).toFixed(1); // 1 casa decimal
 });
 
-new Chart(ctx10, {
+if (ctx10){
+    new Chart(ctx10, {
     type: 'bar',
     data: {
         labels: categoriasP,
@@ -521,6 +541,7 @@ new Chart(ctx10, {
         }
     }
 });
+}
 
 
 
@@ -535,7 +556,8 @@ const crescimentoPotencial = [85, 70, 60]; // valores fictícios
 const margemSuperiorP = crescimentoPotencial.map(v => v + 10); // +10%
 const margemInferiorP = crescimentoPotencial.map(v => v - 10); // -10%
 
-new Chart(ctx11, {
+if (ctx11){
+    new Chart(ctx11, {
     type: 'radar',
     data: {
         labels: produtosTop3,
@@ -596,5 +618,6 @@ new Chart(ctx11, {
         }
     }
 });
+}
 
 //______________________________________________________________________________

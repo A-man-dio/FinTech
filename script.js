@@ -1,41 +1,3 @@
-const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-
-allSideMenu.forEach(item => {
-	const li = item.parentElement;
-
-	item.addEventListener('click', function () {
-		allSideMenu.forEach(i => {
-			i.parentElement.classList.remove('active');
-		})
-
-		li.classList.add('active');
-
-		//
-		const mainItems = document.querySelectorAll("#content main");
-		// Adiciona o evento de clique em cada item
-		mainItems.forEach(item => {
-			item.classList.add("ocultar");
-		});
-		//
-
-		if (li.id == "dashboard-ref") {
-			document.getElementById("dashboard").classList.remove("ocultar");
-		} else if (li.id == "vendas-ref") {
-			document.getElementById("vendas").classList.remove("ocultar");
-		} else if (li.id == "graficos-analise-ref") {
-			document.getElementById("graficos-analise").classList.remove("ocultar");
-		} else if (li.id == "produtos-ref") {
-			document.getElementById("produtos").classList.remove("ocultar");
-		} else if (li.id == "perfil-negocio-ref") {
-			document.getElementById("perfil-negocio").classList.remove("ocultar");
-		}
-
-	})
-
-});
-
-
-
 
 // TOGGLE SIDEBAR
 const menuBar = document.querySelector('#content nav .bx.bx-menu');
@@ -109,6 +71,34 @@ function activeLink() {
 
 }
 
+// ATIVAR MENU DA SIDEBAR BASEADO NA PÁGINA ATUAL
+// ---------------------------------------------
+const sideMenuLinks = document.querySelectorAll('#sidebar .side-menu.top li a');
+const currentPage = window.location.pathname.split('/').pop();
+
+sideMenuLinks.forEach(link => {
+	const li = link.parentElement;
+	const href = link.getAttribute('href');
+
+	
+	if (href === currentPage) {
+		li.classList.add('active');
+		return;
+	}
+
+	
+	if (
+		href === 'graficos.html' &&
+		currentPage.startsWith('graficos-')
+	) {
+		li.classList.add('active');
+	}
+});
+
+
+// -------------------------
+
+
 //filto dropdown
 //---------------------------------------------------------------------
 
@@ -142,53 +132,4 @@ document.addEventListener("click", function (e) {
 });
 
 
-
-//Mudar entre submenus da página "Gráficos e Análise"
-//---------------------------------------------------------------------
-
-const allSubMenus = document.querySelectorAll('.graficos-analise-submenu');
-
-allSubMenus.forEach(item => {
-
-	item.addEventListener('click', function () {
-
-		// Remove active de todos OS <a>
-		allSubMenus.forEach(i => {
-			i.classList.remove('active');
-		});
-
-		// Adiciona active no clicado
-		item.classList.add('active');
-
-		//-----------------------------------------------------------
-		const graficosPrincipaisPaginas = document.querySelectorAll(".graficos-principais-pagina");
-
-		graficosPrincipaisPaginas.forEach(item => {
-			item.classList.add("ocultar");
-		});
-
-		const btnGraficos = document.querySelectorAll(".btn-graficos");
-
-		btnGraficos.forEach(item => {
-			item.classList.add("ocultar");
-		});
-
-		//---------------------------------------------------------
-
-		if (item.id == "resumo-rapido-ref") {
-			document.getElementById("resumo-rapido-submenu").classList.remove("ocultar");
-		} else if (item.id == "graficos-principais-ref") {
-			document.getElementById("graficos-principais-submenu").classList.remove("ocultar");
-			document.getElementById("btn-grafico-personalizado").classList.remove("ocultar");
-		} else if (item.id == "comparacoes-ref") {
-			document.getElementById("comparacoes-submenu").classList.remove("ocultar");
-			document.getElementById("btn-grafico-comparativo").classList.remove("ocultar");
-		} else if (item.id == "predicoes-ref") {
-			document.getElementById("predicoes-submenu").classList.remove("ocultar");
-			document.getElementById("btn-grafico-preditivo").classList.remove("ocultar");
-		}
-
-
-	});
-});
 
