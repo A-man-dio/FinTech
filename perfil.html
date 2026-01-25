@@ -18,50 +18,50 @@
 <body>
 
 	<!-- SIDEBAR -->
-   <section id="sidebar">
-      <a href="#" class="brand">
-        <i class="bx bxs-smile"></i>
-        <span class="text">AdminHub</span>
-      </a>
-      <ul class="side-menu top">
-    
-          <li>
-            <a href="dashboard.html">
-              <i class="bx bxs-dashboard"></i>
-              <span class="text">Dashboard</span>
-            </a>
-          </li>
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class="bx bxs-smile"></i>
+			<span class="text">AdminHub</span>
+		</a>
+		<ul class="side-menu top">
 
-          <li>
-            <a href="produtos.html">
-              <i class="bx bxs-box"></i>
-              <span class="text">Produtos</span>
-            </a>
-          </li>
+			<li>
+				<a href="dashboard.html">
+					<i class="bx bxs-dashboard"></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
 
-          <li>
-            <a href="vendas.html">
-              <i class="bx bxs-shopping-bag-alt"></i>
-              <span class="text">Vendas</span>
-            </a>
-          </li>
+			<li>
+				<a href="produtos.html">
+					<i class="bx bxs-box"></i>
+					<span class="text">Produtos</span>
+				</a>
+			</li>
 
-          <li>
-            <a href="graficos.html">
-              <i class="bx bxs-doughnut-chart"></i>
-              <span class="text">Gráficos e Análises</span>
-            </a>
-          </li>
+			<li>
+				<a href="vendas.html">
+					<i class="bx bxs-shopping-bag-alt"></i>
+					<span class="text">Vendas</span>
+				</a>
+			</li>
 
-          <li>
-            <a href="perfil.html">
-              <i class="bx bxs-user-detail"></i>
-              <span class="text">Perfil de Negócio</span>
-            </a>
-          </li>
-        
-      </ul>
-    </section>
+			<li>
+				<a href="graficos.html">
+					<i class="bx bxs-doughnut-chart"></i>
+					<span class="text">Gráficos e Análises</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="perfil.html">
+					<i class="bx bxs-user-detail"></i>
+					<span class="text">Perfil de Negócio</span>
+				</a>
+			</li>
+
+		</ul>
+	</section>
 	<!-- SIDEBAR -->
 
 
@@ -91,7 +91,7 @@
 		<!-- NAVBAR -->
 
 		<!-- MAIN PERFIL DE NEGÓCIO -->
-		<main id="perfil-negocio" >
+		<main id="perfil-negocio">
 
 			<!-- Cabeçalho -->
 			<div class="head-title">
@@ -330,13 +330,13 @@
 
 				<div class="order">
 					<div class="head">
-						<h3>Melhores vendas da semana</h3>
+						<h3>Top 4 Vendas Mais Lucrativas</h3>
 						<i class='bx bx-search'></i>
-						<i class='bx bx-filter' id="filterBtn2"></i>
+						<i class='bx bx-filter' id="filterBtn"></i>
 						<span id="aplicarFonte">filtro</span>
 
 						<!-- DROPDOWN DE FILTRO -->
-						<div class="filter-dropdown" id="filterDropdown2">
+						<div class="filter-dropdown" id="filterDropdown">
 							<ul>
 								<li>Data</li>
 								<li>Produto</li>
@@ -350,6 +350,7 @@
 						<thead>
 							<tr>
 								<th>Produto</th>
+								<th>ID da Venda</th>
 								<th>Tipo de Pag</th>
 								<th>Qtd</th>
 								<th>Preço Unit</th>
@@ -359,75 +360,11 @@
 							</tr>
 						</thead>
 						<tbody>
-
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Fanta 1L</p>
-								</td>
-								<td>
-									<span class="pagamento tpa">TPA</span>
-								</td>
-								<td>3</td>
-								<td>800 Kz</td>
-								<td>2400 Kz</td>
-
-								<td>01-10-2023 14:32</td>
-								<td><span class="category bebidas">Bebidas</span></td>
-							</tr>
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Arroz 5Kg</p>
-								</td>
-								<td>
-									<span class="pagamento dinheiro">Dinheiro</span>
-								</td>
-								<td>1</td>
-								<td>6500 Kz</td>
-								<td>6500 Kz</td>
-
-								<td>01-10-2023 10:15</td>
-								<td><span class="category alimentos">Alimentos</span></td>
-							</tr>
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Sabonete Dove</p>
-								</td>
-								<td>
-									<span class="pagamento transferencia">Transferência</span>
-								</td>
-								<td>6</td>
-								<td>450 Kz</td>
-								<td>2700 Kz</td>
-
-								<td>30-09-2023 18:20</td>
-								<td><span class="category higiene">Higiene</span></td>
-							</tr>
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Leite Nido</p>
-								</td>
-								<td>
-									<span class="pagamento mobile">Mobile Money</span>
-								</td>
-								<td>2</td>
-								<td>3200 Kz</td>
-								<td>6400 Kz</td>
-
-								<td>29-09-2023 09:00</td>
-								<td><span class="category lacteos">Lácteos</span></td>
-							</tr>
-
+							<!--Aqui ficam as vendas -->
 						</tbody>
 					</table>
 				</div>
+
 			</div>
 
 		</main>
@@ -439,6 +376,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="script.js"></script>
 	<script src="charts.js"></script>
+	<script src="scriptPerfil.js"></script>
 
 </body>
 

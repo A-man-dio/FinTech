@@ -18,50 +18,50 @@
 <body>
 
 	<!-- SIDEBAR -->
-	   <section id="sidebar">
-      <a href="#" class="brand">
-        <i class="bx bxs-smile"></i>
-        <span class="text">AdminHub</span>
-      </a>
-      <ul class="side-menu top">
-    
-          <li>
-            <a href="dashboard.html">
-              <i class="bx bxs-dashboard"></i>
-              <span class="text">Dashboard</span>
-            </a>
-          </li>
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class="bx bxs-smile"></i>
+			<span class="text">AdminHub</span>
+		</a>
+		<ul class="side-menu top">
 
-          <li>
-            <a href="produtos.html">
-              <i class="bx bxs-box"></i>
-              <span class="text">Produtos</span>
-            </a>
-          </li>
+			<li>
+				<a href="dashboard.html">
+					<i class="bx bxs-dashboard"></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
 
-          <li>
-            <a href="vendas.html">
-              <i class="bx bxs-shopping-bag-alt"></i>
-              <span class="text">Vendas</span>
-            </a>
-          </li>
+			<li>
+				<a href="produtos.html">
+					<i class="bx bxs-box"></i>
+					<span class="text">Produtos</span>
+				</a>
+			</li>
 
-          <li>
-            <a href="graficos.html">
-              <i class="bx bxs-doughnut-chart"></i>
-              <span class="text">Gráficos e Análises</span>
-            </a>
-          </li>
+			<li>
+				<a href="vendas.html">
+					<i class="bx bxs-shopping-bag-alt"></i>
+					<span class="text">Vendas</span>
+				</a>
+			</li>
 
-          <li>
-            <a href="perfil.html">
-              <i class="bx bxs-user-detail"></i>
-              <span class="text">Perfil de Negócio</span>
-            </a>
-          </li>
-        
-      </ul>
-    </section>
+			<li>
+				<a href="graficos.html">
+					<i class="bx bxs-doughnut-chart"></i>
+					<span class="text">Gráficos e Análises</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="perfil.html">
+					<i class="bx bxs-user-detail"></i>
+					<span class="text">Perfil de Negócio</span>
+				</a>
+			</li>
+
+		</ul>
+	</section>
 	<!-- SIDEBAR -->
 
 
@@ -91,7 +91,7 @@
 		<!-- NAVBAR -->
 
 		<!-- MAIN PRODUTOS-->
-		<main id="produtos" >
+		<main id="produtos">
 			<div class="head-title">
 				<div class="left">
 					<h1>Produtos</h1>
@@ -110,7 +110,7 @@
 
 					<a href="#" class="btn-download">
 						<i class='bx bx-add-to-queue'></i>
-						<span class="text">Registar Produto</span>
+						<span onclick="toggleProductModal()" class="text">Registar Produto</span>
 					</a>
 
 					<a href="#" class="btn-download">
@@ -151,82 +151,148 @@
 								<th>Código</th>
 								<th>Data/Hora</th>
 								<th>Categoria</th>
+								<th>Ativo</th>
 								<th>Ações</th>
 							</tr>
 						</thead>
 						<tbody>
-
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Fanta 1L</p>
-								</td>
-								<td>800 Kz</td>
-								<td><span class="codigo-produto">7891000000123</span></td>
-								<td>01-10-2023 10:15</td>
-								<td><span class="category bebidas">Bebidas</span></td>
-								<td class="acoes">
-									<button class="action-btn edit" title="Editar"><i class="bx bx-edit"></i></button>
-									<button class="action-btn delete" title="Eliminar"><i
-											class="bx bx-trash"></i></button>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Arroz 5Kg</p>
-								</td>
-								<td>6500 Kz</td>
-								<td><span class="codigo-produto">7891000000123</span></td>
-								<td>01-10-2023 10:15</td>
-								<td><span class="category alimentos">Alimentos</span></td>
-								<td class="acoes">
-									<button class="action-btn edit" title="Editar"><i class="bx bx-edit"></i></button>
-									<button class="action-btn delete" title="Eliminar"><i
-											class="bx bx-trash"></i></button>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Sabonete Dove</p>
-								</td>
-								<td>450 Kz</td>
-								<td><span class="codigo-produto">7891000000123</span></td>
-								<td>30-09-2023 18:20</td>
-								<td><span class="category higiene">Higiene</span></td>
-								<td class="acoes">
-									<button class="action-btn edit" title="Editar"><i class="bx bx-edit"></i></button>
-									<button class="action-btn delete" title="Eliminar"><i
-											class="bx bx-trash"></i></button>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Leite Nido</p>
-								</td>
-
-								<td>3200 Kz</td>
-								<td><span class="codigo-produto">7891000000123</span></td>
-								<td>29-09-2023 09:00</td>
-								<td><span class="category lacteos">Lácteos</span></td>
-								<td class="acoes">
-									<button class="action-btn edit" title="Editar"><i class="bx bx-edit"></i></button>
-									<button class="action-btn delete" title="Eliminar"><i
-											class="bx bx-trash"></i></button>
-								</td>
-							</tr>
-
+							<!--Aqui ficam os produtos -->
 						</tbody>
 					</table>
 				</div>
 
 			</div>
+
+
+			<!-- MODAL REGISTRAR PRODUTO -->
+			<div class="modal-overlay" id="productModal" onclick="closeOnOverlay(event)">
+				<div class="modal-card">
+
+					<!-- FECHAR -->
+					<span class="close-modal" onclick="toggleProductModal()">
+						<i class='bx bx-x'></i>
+					</span>
+
+					<!-- FOTO DO PRODUTO -->
+					<div class="product-photo">
+						<img src="img/no-product-image.jpg" alt="Foto do Produto" id="addPreviewImg">
+						<label class="upload-btn">
+							<i class='bx bxs-camera'></i>
+							<input type="file" hidden onchange="previewImage(event, 'add')">
+						</label>
+					</div>
+
+					<h2>Registrar Produto</h2>
+
+					<form class="product-form">
+						<div class="input-group">
+							<label>Nome do Produto</label>
+							<input type="text" placeholder="Ex: Fanta Laranja 1L">
+						</div>
+
+						<div class="input-group">
+							<label>Categoria</label>
+							<div class="select-wrapper">
+								<select>
+									<option value="Bebidas">Bebidas</option>
+									<option value="Alimentação">Alimentação</option>
+									<option value="Roupas & Acessórios">Roupas & Acessórios</option>
+									<option value="Frescos">Frescos</option>
+									<option value="Higiene e Limpeza">Higiene e Limpeza</option>
+									<option value="Eletrônicos & Acessórios">Eletrônicos & Acessórios</option>
+									<option value="Lanches e Doces">Lanches e Doces</option>
+									<option value="Beleza e Cuidados Pessoais">Beleza e Cuidados Pessoais</option>
+									<option value="Farmácia">Farmácia</option>
+									<option value="Outro">Outro</option>
+								</select>
+								<i class='bx bx-chevron-down'></i>
+							</div>
+						</div>
+
+						<div class="input-group">
+							<label>Código do Produto</label>
+							<input type="text" placeholder="COD-00123">
+						</div>
+
+						<div class="input-group">
+							<label>Preço Unitário (Kz)</label>
+							<input type="number" placeholder="Ex: 450.00">
+						</div>
+
+						<button type="submit" class="btn-save">
+							<i class='bx bxs-package'></i> Salvar Produto
+						</button>
+
+					</form>
+
+				</div>
+			</div>
+
+			<!-- MODAL EDITAR PRODUTO-->
+			<div class="modal-overlay" id="editModal" onclick="closeOnOverlay(event)">
+				<div class="modal-card">
+
+					<!-- FECHAR -->
+					<span class="close-modal" onclick="toggleProductEditModal()">
+						<i class='bx bx-x'></i>
+					</span>
+
+					<!-- FOTO DO PRODUTO -->
+					<div class="product-photo">
+						<img src="img/fanta-laranja-1l.png" alt="Foto do Produto" id="editPreviewImg">
+						<label class="upload-btn">
+							<i class='bx bxs-camera'></i>
+							<input type="file" hidden onchange="previewImage(event, 'edit')">
+						</label>
+					</div>
+
+					<h2>Editar Produto</h2>
+
+					<form class="product-edit-form">
+						<div class="input-group">
+							<label>Nome do Produto</label>
+							<input type="text" placeholder="Ex: Fanta Laranja 1L">
+						</div>
+
+						<div class="input-group">
+							<label>Categoria</label>
+							<div class="select-wrapper">
+								<select>
+									<option value="Bebidas">Bebidas</option>
+									<option value="Alimentação">Alimentação</option>
+									<option value="Roupas & Acessórios">Roupas & Acessórios</option>
+									<option value="Frescos">Frescos</option>
+									<option value="Higiene e Limpeza">Higiene e Limpeza</option>
+									<option value="Eletrônicos & Acessórios">Eletrônicos & Acessórios</option>
+									<option value="Lanches e Doces">Lanches e Doces</option>
+									<option value="Beleza e Cuidados Pessoais">Beleza e Cuidados Pessoais</option>
+									<option value="Farmácia">Farmácia</option>
+									<option value="Outro">Outro</option>
+								</select>
+								<i class='bx bx-chevron-down'></i>
+							</div>
+						</div>
+
+						<div class="input-group">
+							<label>Código do Produto</label>
+							<input type="text" placeholder="COD-00123">
+						</div>
+
+						<div class="input-group">
+							<label>Preço Unitário (Kz)</label>
+							<input type="number" placeholder="Ex: 450.00">
+						</div>
+
+						<button type="submit" class="btn-save">
+							<i class='bx bxs-package'></i> Editar Produto
+						</button>
+
+					</form>
+
+				</div>
+			</div>
+
+
 
 			<div class="table-data centralizar">
 
@@ -256,6 +322,7 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="script.js"></script>
+	<script src="scriptProdutos.js"></script>
 	<script src="charts.js"></script>
 
 </body>

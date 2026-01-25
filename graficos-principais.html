@@ -159,28 +159,96 @@
 			<div id="graficos-principais-submenu" class="table-data graficos-principais-pagina">
 
 				<div class="chart">
-
-					<h2>Vendas no período estipulado</h2>
+					<h2>Vendas diárias (Últimos 7 dias)</h2>
 					<i class='bx bx-edit organizar'></i>
 					<canvas id="vendas-periodo-estipulado"></canvas>
-				</div>
 
-				<div class="chart">
-					<h2>Top 5 Produtos mais Lucrativos</h2>
-					<i class='bx bx-edit organizar'></i>
-					<canvas id="5-produtos-mais-lucrativos"></canvas>
+					<div class="recommend-cards">
+						<!-- CARD 4 - Preço / Margem -->
+						<div class="recommend-card pricing">
+							<div class="rec-line"></div>
+							<div class="date-box">
+								<span class="day">Thu</span>
+								<span class="number">21</span>
+							</div>
+
+							<div class="info">
+								<h3>Vendas Diárias ⚡</h3>
+								<p class="desc">A 5ª semana apresentou o maior aumento (+7,7%). Verifique se houve
+									campanhas ou compras específicas que geraram esse crescimento.</p>
+							</div>
+						</div>
+					</div>
+
 				</div>
 
 				<div class="chart">
 					<h2>Top 5 Produtos mais vendidos</h2>
 					<i class='bx bx-edit organizar'></i>
 					<canvas id="5-produtos-mais-vendidos"></canvas>
+
+					<div class="recommend-cards">
+						<div class="recommend-card weather">
+							<div class="rec-line"></div>
+							<div class="date-box">
+								<span class="day">Wed</span>
+								<span class="number">20</span>
+							</div>
+
+							<div class="info">
+								<h3>Clima favorável 🌦️</h3>
+								<p class="desc">Vai fazer calor — bebidas geladas tendem a vender mais.</p>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="chart">
+					<h2>Top 5 Produtos mais Lucrativos</h2>
+					<i class='bx bx-edit organizar'></i>
+					<canvas id="5-produtos-mais-lucrativos"></canvas>
+
+					<div class="recommend-cards">
+
+						<div class="recommend-card stock">
+							<div class="rec-line"></div>
+							<div class="date-box">
+								<span class="day">Mon</span>
+								<span class="number">18</span>
+							</div>
+
+							<div class="info">
+								<h3>Reposição de estoque 🛒</h3>
+								<p class="desc">As vendas de Fanta 1L aumentaram 25% — reponha estoque.</p>
+							</div>
+						</div>
+
+					</div>
+
 				</div>
 
 				<div class="chart">
 					<h2>Top 5 Categorias mais lucrativas</h2>
 					<i class='bx bx-edit organizar'></i>
 					<canvas id="5-categorias-mais-lucrativas"></canvas>
+
+					<div class="recommend-cards">
+						<div class="recommend-card trending">
+							<div class="rec-line"></div>
+							<div class="date-box">
+								<span class="day">Tue</span>
+								<span class="number">19</span>
+							</div>
+
+							<div class="info">
+								<h3>Aumento de vendas 📈</h3>
+								<p class="desc">Sexta-feira tem 40% mais vendas — considere promoções.</p>
+							</div>
+						</div>
+					</div>
+
 				</div>
 
 			</div>
@@ -208,11 +276,11 @@
 					<div class="head">
 						<h3>Vendas Recentes</h3>
 						<i class='bx bx-search'></i>
-						<i class='bx bx-filter' id="filterBtn2"></i>
+						<i class='bx bx-filter' id="filterBtn"></i>
 						<span id="aplicarFonte">filtro</span>
 
 						<!-- DROPDOWN DE FILTRO -->
-						<div class="filter-dropdown" id="filterDropdown2">
+						<div class="filter-dropdown" id="filterDropdown">
 							<ul>
 								<li>Data</li>
 								<li>Produto</li>
@@ -226,6 +294,7 @@
 						<thead>
 							<tr>
 								<th>Produto</th>
+								<th>ID da Venda</th>
 								<th>Tipo de Pag</th>
 								<th>Qtd</th>
 								<th>Preço Unit</th>
@@ -235,72 +304,7 @@
 							</tr>
 						</thead>
 						<tbody>
-
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Fanta 1L</p>
-								</td>
-								<td>
-									<span class="pagamento tpa">TPA</span>
-								</td>
-								<td>3</td>
-								<td>800 Kz</td>
-								<td>2400 Kz</td>
-
-								<td>01-10-2023 14:32</td>
-								<td><span class="category bebidas">Bebidas</span></td>
-							</tr>
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Arroz 5Kg</p>
-								</td>
-								<td>
-									<span class="pagamento dinheiro">Dinheiro</span>
-								</td>
-								<td>1</td>
-								<td>6500 Kz</td>
-								<td>6500 Kz</td>
-
-								<td>01-10-2023 10:15</td>
-								<td><span class="category alimentos">Alimentos</span></td>
-							</tr>
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Sabonete Dove</p>
-								</td>
-								<td>
-									<span class="pagamento transferencia">Transferência</span>
-								</td>
-								<td>6</td>
-								<td>450 Kz</td>
-								<td>2700 Kz</td>
-
-								<td>30-09-2023 18:20</td>
-								<td><span class="category higiene">Higiene</span></td>
-							</tr>
-
-							<tr>
-								<td>
-									<img src="img/people.png">
-									<p>Leite Nido</p>
-								</td>
-								<td>
-									<span class="pagamento mobile">Mobile Money</span>
-								</td>
-								<td>2</td>
-								<td>3200 Kz</td>
-								<td>6400 Kz</td>
-
-								<td>29-09-2023 09:00</td>
-								<td><span class="category lacteos">Lácteos</span></td>
-							</tr>
-
+							<!--Aqui ficam as vendas -->
 						</tbody>
 					</table>
 				</div>
@@ -337,6 +341,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="script.js"></script>
 	<script src="charts.js"></script>
+	<script src="scriptGraficosPrincipais.js"></script>
 
 </body>
 
